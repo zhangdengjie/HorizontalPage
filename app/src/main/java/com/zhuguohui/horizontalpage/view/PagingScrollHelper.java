@@ -10,9 +10,8 @@ import android.view.View;
 
 /**
  * 实现RecycleView分页滚动的工具类
- * Created by zhuguohui on 2016/11/10.
+ * 每次滚动一页
  */
-
 public class PagingScrollHelper {
 
     RecyclerView mRecyclerView = null;

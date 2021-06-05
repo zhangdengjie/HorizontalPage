@@ -7,6 +7,11 @@ import android.view.View
 import androidx.core.view.NestedScrollingParent
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * 实现 NestedScrollingParent 接口
+ * 和 itemView中包含 [androidx.core.widget.NestedScrollView] 配合
+ * 达到列表且套滚动布局的效果
+ */
 open class NestedRecyclerView : RecyclerView, NestedScrollingParent {
 
 	private var nestedScrollTarget: View? = null
