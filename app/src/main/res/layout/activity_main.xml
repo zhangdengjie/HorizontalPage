@@ -64,7 +64,7 @@
             android:text="共3页" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <com.zhuguohui.horizontalpage.view.NestedRecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="300dp"
         android:layout_height="300dp"

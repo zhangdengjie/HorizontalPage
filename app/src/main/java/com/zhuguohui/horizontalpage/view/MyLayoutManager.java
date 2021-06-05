@@ -1,12 +1,9 @@
 package com.zhuguohui.horizontalpage.view;
 
-import android.animation.Animator;
-import android.animation.ValueAnimator;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.SparseArray;
-import android.view.MotionEvent;
 import android.view.View;
 
 /**
