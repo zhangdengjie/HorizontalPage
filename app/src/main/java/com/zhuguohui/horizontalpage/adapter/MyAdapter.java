@@ -43,6 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     "链接：https://www.jianshu.com/p/3fe949083029\n" +
                     "来源：简书\n" +
                     "著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。");
+//            data.add(data_name + "-" + i);
         }
     }
 

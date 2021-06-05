@@ -14,6 +14,8 @@ import android.view.View;
  */
 public class PagingScrollHelper {
 
+    private static final String TAG = "PagingScrollHelper";
+
     RecyclerView mRecyclerView = null;
 
     private final MyOnScrollListener mOnScrollListener = new MyOnScrollListener();
@@ -117,6 +119,9 @@ public class PagingScrollHelper {
 
         @Override
         public boolean onFling(int velocityX, int velocityY) {
+
+            Log.i(TAG, "onFling: " + velocityX + " " + velocityY);
+
             if (mOrientation == ORIENTATION.NULL) {
                 return false;
             }
@@ -158,7 +163,7 @@ public class PagingScrollHelper {
             if (mAnimator == null) {
                 mAnimator = ValueAnimator.ofInt(startPoint, endPoint);
 
-                mAnimator.setDuration(300);
+                mAnimator.setDuration(275);
                 mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
@@ -201,6 +206,9 @@ public class PagingScrollHelper {
     public class MyOnScrollListener extends RecyclerView.OnScrollListener {
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
+            Log.i(TAG, "onScrollStateChanged: " + newState);
+
             // newState==0表示滚动停止，此时需要处理回滚
             if (newState == 0 && mOrientation != ORIENTATION.NULL) {
                 boolean move;
@@ -246,13 +254,13 @@ public class PagingScrollHelper {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            //手指按下的时候记录开始滚动的坐标
+            // 手指按下的时候记录开始滚动的坐标
             if (firstTouch) {
-                //第一次touch可能是ACTION_MOVE或ACTION_DOWN,所以使用这种方式判断
                 firstTouch = false;
                 startY = offsetY;
                 startX = offsetX;
             }
+
             if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
                 firstTouch = true;
             }

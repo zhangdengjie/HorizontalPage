@@ -3,6 +3,7 @@ package com.zhuguohui.horizontalpage;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     RecyclerView recyclerView;
     MyAdapter myAdapter;
     TextView tv_title;
-    PagingScrollHelper scrollHelper = new PagingScrollHelper();
+//    PagingScrollHelper scrollHelper = new PagingScrollHelper();
     RadioGroup rg_layout;
     Button btnUpdate;
     TextView tv_page_total;
@@ -44,17 +45,21 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         myAdapter = new MyAdapter();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setAdapter(myAdapter);
-        scrollHelper.setUpRecycleView(recyclerView);
-        scrollHelper.setOnPageChangeListener(this);
+//        scrollHelper.setUpRecycleView(recyclerView);
+//        scrollHelper.setOnPageChangeListener(this);
         switchLayout(R.id.rb_horizontal_page);
         recyclerView.setHorizontalScrollBarEnabled(true);
+
+
+        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper();
+        pagerSnapHelper.attachToRecyclerView(recyclerView);
         //获取总页数,采用这种方法才能获得正确的页数。否则会因为RecyclerView.State 缓存问题，页数不正确。
-        recyclerView.post(new Runnable() {
-            @Override
-            public void run() {
-                tv_page_total.setText("共" + scrollHelper.getPageCount() + "页");
-            }
-        });
+//        recyclerView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                tv_page_total.setText("共" + scrollHelper.getPageCount() + "页");
+//            }
+//        });
 
     }
 
@@ -99,8 +104,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.removeItemDecoration(lastItemDecoration);
             recyclerView.addItemDecoration(itemDecoration);
-            scrollHelper.updateLayoutManger();
-            scrollHelper.scrollToPosition(0);
+//            scrollHelper.updateLayoutManger();
+//            scrollHelper.scrollToPosition(0);
             lastItemDecoration = itemDecoration;
         }
 
@@ -132,13 +137,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         myAdapter.updateData();
         myAdapter.notifyDataSetChanged();
         //滚动到第一页
-        scrollHelper.scrollToPosition(0);
-        recyclerView.post(new Runnable() {
-            @Override
-            public void run() {
-                tv_page_total.setText("共" + scrollHelper.getPageCount() + "页");
-            }
-        });
+//        scrollHelper.scrollToPosition(0);
+//        recyclerView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                tv_page_total.setText("共" + scrollHelper.getPageCount() + "页");
+//            }
+//        });
     }
 
 
