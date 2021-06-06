@@ -3,22 +3,28 @@ package com.zhuguohui.horizontalpage.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import androidx.annotation.Nullable;
+import androidx.core.view.NestedScrollingParent;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Scroller;
 
 /**
  * Created by zhuguohui on 2016/11/9.
  */
 
-public class MyRecyclerView extends RecyclerView {
+public class MyRecyclerView extends RecyclerView implements NestedScrollingParent {
     public MyRecyclerView(Context context) {
         this(context, null);
     }
 
     Scroller mScroller;
+
+    @Override
+    public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
+    }
 
     public MyRecyclerView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);

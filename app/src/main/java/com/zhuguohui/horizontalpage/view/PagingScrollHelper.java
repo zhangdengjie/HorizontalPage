@@ -51,6 +51,9 @@ public class PagingScrollHelper {
     }
 
     public void updateLayoutManger() {
+        if (mRecyclerView == null) {
+            return;
+        }
         RecyclerView.LayoutManager layoutManager = mRecyclerView.getLayoutManager();
         if (layoutManager != null) {
             if (layoutManager.canScrollVertically()) {
@@ -95,6 +98,9 @@ public class PagingScrollHelper {
     ValueAnimator mAnimator = null;
 
     public void scrollToPosition(int position) {
+        if (mRecyclerView == null) {
+            return;
+        }
         if (mAnimator == null) {
             mOnFlingListener.onFling(0, 0);
         }
@@ -241,6 +247,7 @@ public class PagingScrollHelper {
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             // 滚动结束记录滚动的偏移量
+            Log.i(TAG, "onScrolled: " + dx  + " " + dy);
             offsetY += dy;
             offsetX += dx;
         }

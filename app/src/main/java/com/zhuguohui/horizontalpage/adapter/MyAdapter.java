@@ -48,13 +48,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         final String title = data.get(position);
         holder.tv_title.setText(title);
         holder.tv_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "item" + title + " 被点击了", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "item" + /*title*/position + " 被点击了", Toast.LENGTH_SHORT).show();
             }
         });
     }
